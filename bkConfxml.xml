@@ -1,0 +1,116 @@
+<head version="2.5">
+<!--	sersync2 参数——————————————————————————————————————————————————————————————————-->
+    <debug start="false" />
+    <fileSystem xfs="true" />
+
+    <filter start="false">
+	<exclude expression="(.*)\.php" />
+	<exclude expression="(.*)\.svn" />
+	<exclude expression="(.*)\.gz" />
+	<exclude expression="^info/*" />
+	<exclude expression="^static/*" />
+    </filter>
+
+    <inotify>
+	<delete start="true" />
+	<createFolder start="true" />
+	<createFile start="true" />
+	<closeWrite start="true" />
+	<moveFrom start="true" />
+	<moveTo start="true" />
+	<attrib start="true" />
+	<modify start="true" />
+    </inotify>
+
+    <sersync>
+	<rsync>
+	    <commonParams params="-aDrtuz" />
+		<logfile params=""/>
+	    <auth passwordfile="/etc/rsync.pas" start="false" users="root" />
+	    <userDefinedPort port="874" start="false" />
+	    <timeout start="false" time="100" />
+	    <ssh start="false" />
+	</rsync>
+	<failLog path="/tmp/rsync_fail_log.sh" timeToExecute="60" />
+	<crontab schedule="-1" start="false">
+	    <crontabfilter start="false">
+		<exclude expression="*.php" />
+		<exclude expression="*.svn" />
+		<exclude expression="*.gz" />
+		<exclude expression="info/*" />
+		<exclude expression="static/*" />
+	    </crontabfilter>
+	</crontab>
+    </sersync>
+
+<!--	kfs 参数——————————————————————————————————————————————————————————————————————-->
+	<watch str="" />
+	<flush str="false"/>
+
+	<merge_local str="" />
+	<work_local str="" />
+    <up_local str="" />
+	<low_local str="" />
+
+	<up_mfs str="" />
+	<low_mfs str="" />
+
+	<latestVersion str="0" />
+	<versionNum str="2" />
+
+	<syncTime str="5" />
+	<syncPid str="" />
+	<syncLog str="" />
+
+<!--	kfs 和 主机共用参数————————————————————————————————————————————————————————————————————-->
+<!--	mfs 文件夹-->
+	<mfs_dir str="/amax_raid/mfs_dir/user_dir"/>
+<!--	xfce_local 文件夹-->
+	<xfce_local str="/amax_raid/xfce_local"/>
+
+<!--	Web监听端口-->
+	<web_listen_port str="8123"/>
+
+<!--	主机基本参数——————————————————————————————————————————————————————————————————————-->
+	<machine_name str="LabVM2"/>
+	<host_name str="server01"/>
+	<srv_master_addr str="192.168.0.11"/>
+	<srv_master_port str="7777"/>
+
+<!--	docker 相关参数-->
+<!--	# docker配置文件夹, 空值默认与Server.py文件同个文件夹-->
+	<docker_conf_dir str="/amax_raid/docker2_conf_dir"/>
+<!--	# docker用户文件夹，存储用户home文件-->
+	<docker_user_dir str="/amax_raid/docker2_user_dir"/>
+<!--	# docker公共文件夹，所有虚拟机均可访问-->
+	<docker_public_dir str="/amax_raid/docker2_public_dir"/>
+
+<!--	# 虚拟机用户开始的端口-->
+	<docker_port_base str="9000"/>
+<!--	# 每个用户分配端口数目-->
+	<docker_user_port_num str="10"/>
+
+<!--	# 镜像名-->
+	<img_name str="ubuntu:latest"/>
+
+<!--	# 内存百分比限制，含swap交换分区总和, 内存绝对数值限制，含swap交换分区总和。当绝对值和百分比共存时，以绝对值为准
+ mem_limit_abs=8g, 数字加g 组合-->
+	<mem_limit_pcnt str="0.8"/>
+	<mem_limit_abs str=""/>
+
+<!--	# 共享内存百分比限制,共享内存绝对值限制，当绝对值和百分比共存时，以绝对值为准-->
+	<shm_limit_pcnt str="0.8"/>
+	<shm_limit_abs str=""/>
+
+<!--	# cpu 主机保留核心数,保留的核不会被容器使用-->
+	<cpu_rest_core_num str="2"/>
+
+<!--	# e.g. extra_normal_static_vol=/usr/share/themes:bind:/usr/share/themes:ro;/usr/share/icons:bind:/usr/share/icons:ro;-->
+	<extra_normal_static_vol str="/usr/local/MATLAB:bind:/usr/local/MATLAB:ro;/usr/share/themes:bind:/usr/share/themes:ro;/usr/share/icons:bind:/usr/share/icons:ro;"/>
+
+<!--	容器存活时间检查，单位小时-->
+	<time_check_flag str="true"/>
+	<time_send_mail str="144"/>
+	<time_stop_ctan str="168"/>
+
+</head>
