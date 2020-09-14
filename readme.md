@@ -53,6 +53,9 @@ sudo tar -zxvpf xfce_rootfs.tgz -C xfce_local
 填入mfs_dir路径\
 <mfs_dir str="path/to/mfs_dir"/>  
 
+#### 赋予overlay2,sersync2执行权限
+chmod +x overlay2 sersync2
+
 # 运行程序
 服务主机运行： venv/bin/python webServer.py \
 节点主机运行： venv/bin/python labNode.py
