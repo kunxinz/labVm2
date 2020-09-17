@@ -42,6 +42,7 @@ mkdir mfs_dir \
 sudo mount.moosefs -o suid mfs_dir -H MFS_ip_addr 
 
 #### 解压xfce_rootfs.tgz
+\# 下载xfce_local根文件[镜像](https://pan.baidu.com/s/1npoQNle_vPKkU0WBc0FKAA) ，密码1234。 \
 \# 注意必须要用sudo，保持文件夹属性不变。 \
 cd ~ \
 mkdir xfce_local \
